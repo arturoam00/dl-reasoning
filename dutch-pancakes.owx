@@ -1,0 +1,1398 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/aabril/ontologies/2023/10/dutch-pancakes"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/aabril/ontologies/2023/10/dutch-pancakes">
+    <Prefix name="" IRI="http://www.semanticweb.org/aabril/ontologies/2023/10/dutch-pancakes/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal>An ontology for a Dutch pancakes restaurant</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#AnimalDerivedIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AppleIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BaconIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BakingPowderIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BakingSodaIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BananaIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BellPepperIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ButterIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CashewIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CheeseIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChocolateCurlIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChocolateIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CinnamonIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DairyIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EggDerivedIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EggIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FishIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FlourIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Food"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ForestDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ForestFriendlyDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FreshFruitIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FruitIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GingerIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GlutenFreeDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GlutenFreeFlourIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GlutenFreePlainDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GlutenFreePlainFlourIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GroenteDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HamCheeseDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HamIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HoneyIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ingredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JamIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LactoseFreeDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MeatIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MilkIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MushroomIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NamedDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NutFreeDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NutIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OilIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OnionIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PancakeDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PlainDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RaisinIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SaltIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SavoryDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SavorySauceIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SavorySpiciesIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ScrambledEggIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StrawberrySauceIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SugarIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SweetDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SweetSauceIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SweetSpiciesIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TasteProfile"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VariedNutIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VeganButter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VeganDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VeganFatIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VeganPlainDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VegetableIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VegetarianDish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WalnutIngredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WheatFlourIngredient"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasTasteProfile"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Savory"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sweet"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Undefined"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#GlutenFreeDish"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#PancakeDish"/>
+            <ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasIngredient"/>
+                    <Class IRI="#FlourIngredient"/>
+                </ObjectSomeValuesFrom>
+            </ObjectComplementOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Ingredient"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#LactoseFreeDish"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#PancakeDish"/>
+            <ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasIngredient"/>
+                    <Class IRI="#DairyIngredient"/>
+                </ObjectSomeValuesFrom>
+            </ObjectComplementOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Ingredient"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#NutFreeDish"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#PancakeDish"/>
+            <ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasIngredient"/>
+                    <Class IRI="#NutIngredient"/>
+                </ObjectSomeValuesFrom>
+            </ObjectComplementOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Ingredient"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SavoryDish"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#PancakeDish"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Ingredient"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <ObjectHasValue>
+                    <ObjectProperty IRI="#hasTasteProfile"/>
+                    <NamedIndividual IRI="#Savory"/>
+                </ObjectHasValue>
+            </ObjectSomeValuesFrom>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <ObjectUnionOf>
+                    <ObjectHasValue>
+                        <ObjectProperty IRI="#hasTasteProfile"/>
+                        <NamedIndividual IRI="#Savory"/>
+                    </ObjectHasValue>
+                    <ObjectHasValue>
+                        <ObjectProperty IRI="#hasTasteProfile"/>
+                        <NamedIndividual IRI="#Undefined"/>
+                    </ObjectHasValue>
+                </ObjectUnionOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SweetDish"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#PancakeDish"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Ingredient"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <ObjectHasValue>
+                    <ObjectProperty IRI="#hasTasteProfile"/>
+                    <NamedIndividual IRI="#Sweet"/>
+                </ObjectHasValue>
+            </ObjectSomeValuesFrom>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <ObjectUnionOf>
+                    <ObjectHasValue>
+                        <ObjectProperty IRI="#hasTasteProfile"/>
+                        <NamedIndividual IRI="#Sweet"/>
+                    </ObjectHasValue>
+                    <ObjectHasValue>
+                        <ObjectProperty IRI="#hasTasteProfile"/>
+                        <NamedIndividual IRI="#Undefined"/>
+                    </ObjectHasValue>
+                </ObjectUnionOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TasteProfile"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Savory"/>
+            <NamedIndividual IRI="#Sweet"/>
+            <NamedIndividual IRI="#Undefined"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#VeganDish"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#PancakeDish"/>
+            <ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasIngredient"/>
+                    <Class IRI="#AnimalDerivedIngredient"/>
+                </ObjectSomeValuesFrom>
+            </ObjectComplementOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Ingredient"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#VegetarianDish"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#PancakeDish"/>
+            <ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasIngredient"/>
+                    <ObjectUnionOf>
+                        <Class IRI="#FishIngredient"/>
+                        <Class IRI="#MeatIngredient"/>
+                    </ObjectUnionOf>
+                </ObjectSomeValuesFrom>
+            </ObjectComplementOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Ingredient"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#AnimalDerivedIngredient"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AppleIngredient"/>
+        <Class IRI="#FruitIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BaconIngredient"/>
+        <Class IRI="#MeatIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BakingPowderIngredient"/>
+        <Class IRI="#SavorySpiciesIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BakingSodaIngredient"/>
+        <Class IRI="#SavorySpiciesIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BananaIngredient"/>
+        <Class IRI="#FruitIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BellPepperIngredient"/>
+        <Class IRI="#VegetableIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ButterIngredient"/>
+        <Class IRI="#AnimalDerivedIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CashewIngredient"/>
+        <Class IRI="#NutIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CheeseIngredient"/>
+        <Class IRI="#DairyIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChocolateCurlIngredient"/>
+        <Class IRI="#ChocolateIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChocolateIngredient"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChocolateIngredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Sweet"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CinnamonIngredient"/>
+        <Class IRI="#SweetSpiciesIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DairyIngredient"/>
+        <Class IRI="#AnimalDerivedIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DairyIngredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Undefined"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EggDerivedIngredient"/>
+        <Class IRI="#AnimalDerivedIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EggDerivedIngredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Undefined"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EggIngredient"/>
+        <Class IRI="#EggDerivedIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FishIngredient"/>
+        <Class IRI="#AnimalDerivedIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FishIngredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Undefined"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FlourIngredient"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FlourIngredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Undefined"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestDish"/>
+        <Class IRI="#NamedDish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#AppleIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BakingPowderIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BakingSodaIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#ButterIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#CashewIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#EggIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#FlourIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#MilkIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#SaltIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#SugarIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#WalnutIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestDish"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <ObjectUnionOf>
+                <Class IRI="#AppleIngredient"/>
+                <Class IRI="#BakingPowderIngredient"/>
+                <Class IRI="#BakingSodaIngredient"/>
+                <Class IRI="#ButterIngredient"/>
+                <Class IRI="#CashewIngredient"/>
+                <Class IRI="#EggIngredient"/>
+                <Class IRI="#FlourIngredient"/>
+                <Class IRI="#MilkIngredient"/>
+                <Class IRI="#SaltIngredient"/>
+                <Class IRI="#SugarIngredient"/>
+                <Class IRI="#WalnutIngredient"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestFriendlyDish"/>
+        <Class IRI="#NamedDish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestFriendlyDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#AppleIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestFriendlyDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BakingPowderIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestFriendlyDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BakingSodaIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestFriendlyDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#CashewIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestFriendlyDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#FlourIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestFriendlyDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#OilIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestFriendlyDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#SaltIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestFriendlyDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#SugarIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestFriendlyDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#WalnutIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ForestFriendlyDish"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <ObjectUnionOf>
+                <Class IRI="#AppleIngredient"/>
+                <Class IRI="#BakingPowderIngredient"/>
+                <Class IRI="#BakingSodaIngredient"/>
+                <Class IRI="#CashewIngredient"/>
+                <Class IRI="#FlourIngredient"/>
+                <Class IRI="#OilIngredient"/>
+                <Class IRI="#SaltIngredient"/>
+                <Class IRI="#SugarIngredient"/>
+                <Class IRI="#WalnutIngredient"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FreshFruitIngredient"/>
+        <Class IRI="#FruitIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FruitIngredient"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FruitIngredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Sweet"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GingerIngredient"/>
+        <Class IRI="#SavorySpiciesIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlutenFreeFlourIngredient"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlutenFreeFlourIngredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Undefined"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlutenFreePlainDish"/>
+        <Class IRI="#NamedDish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlutenFreePlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BakingPowderIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlutenFreePlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BakingSodaIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlutenFreePlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#ButterIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlutenFreePlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#EggIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlutenFreePlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#GlutenFreeFlourIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlutenFreePlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#MilkIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlutenFreePlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#SaltIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlutenFreePlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#SugarIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlutenFreePlainDish"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <ObjectUnionOf>
+                <Class IRI="#BakingPowderIngredient"/>
+                <Class IRI="#BakingSodaIngredient"/>
+                <Class IRI="#ButterIngredient"/>
+                <Class IRI="#EggIngredient"/>
+                <Class IRI="#GlutenFreeFlourIngredient"/>
+                <Class IRI="#MilkIngredient"/>
+                <Class IRI="#SaltIngredient"/>
+                <Class IRI="#SugarIngredient"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlutenFreePlainFlourIngredient"/>
+        <Class IRI="#GlutenFreeFlourIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GroenteDish"/>
+        <Class IRI="#NamedDish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GroenteDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BakingPowderIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GroenteDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BakingSodaIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GroenteDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BellPepperIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GroenteDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#FlourIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GroenteDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#MushroomIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GroenteDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#OilIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GroenteDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#OnionIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GroenteDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#SaltIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GroenteDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#SugarIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GroenteDish"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <ObjectUnionOf>
+                <Class IRI="#BakingPowderIngredient"/>
+                <Class IRI="#BakingSodaIngredient"/>
+                <Class IRI="#BellPepperIngredient"/>
+                <Class IRI="#FlourIngredient"/>
+                <Class IRI="#MushroomIngredient"/>
+                <Class IRI="#OilIngredient"/>
+                <Class IRI="#OnionIngredient"/>
+                <Class IRI="#SaltIngredient"/>
+                <Class IRI="#SugarIngredient"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HamCheeseDish"/>
+        <Class IRI="#NamedDish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HamCheeseDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BakingPowderIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HamCheeseDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BakingSodaIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HamCheeseDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#ButterIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HamCheeseDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#CheeseIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HamCheeseDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#EggIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HamCheeseDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#FlourIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HamCheeseDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#HamIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HamCheeseDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#MilkIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HamCheeseDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#SaltIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HamCheeseDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#SugarIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HamCheeseDish"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <ObjectUnionOf>
+                <Class IRI="#BakingPowderIngredient"/>
+                <Class IRI="#BakingSodaIngredient"/>
+                <Class IRI="#ButterIngredient"/>
+                <Class IRI="#CheeseIngredient"/>
+                <Class IRI="#EggIngredient"/>
+                <Class IRI="#FlourIngredient"/>
+                <Class IRI="#HamIngredient"/>
+                <Class IRI="#MilkIngredient"/>
+                <Class IRI="#SaltIngredient"/>
+                <Class IRI="#SugarIngredient"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HamIngredient"/>
+        <Class IRI="#MeatIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HoneyIngredient"/>
+        <Class IRI="#SweetSauceIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ingredient"/>
+        <Class IRI="#Food"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ingredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Undefined"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JamIngredient"/>
+        <Class IRI="#SweetSauceIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MeatIngredient"/>
+        <Class IRI="#AnimalDerivedIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MeatIngredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Savory"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MilkIngredient"/>
+        <Class IRI="#DairyIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MushroomIngredient"/>
+        <Class IRI="#VegetableIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NamedDish"/>
+        <Class IRI="#PancakeDish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NamedDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#Ingredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NutIngredient"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OilIngredient"/>
+        <Class IRI="#VeganFatIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OnionIngredient"/>
+        <Class IRI="#VegetableIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PancakeDish"/>
+        <Class IRI="#Food"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlainDish"/>
+        <Class IRI="#NamedDish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BakingPowderIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BakingSodaIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#ButterIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#EggIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#FlourIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#MilkIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#SaltIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#SugarIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlainDish"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <ObjectUnionOf>
+                <Class IRI="#BakingPowderIngredient"/>
+                <Class IRI="#BakingSodaIngredient"/>
+                <Class IRI="#ButterIngredient"/>
+                <Class IRI="#EggIngredient"/>
+                <Class IRI="#FlourIngredient"/>
+                <Class IRI="#MilkIngredient"/>
+                <Class IRI="#SaltIngredient"/>
+                <Class IRI="#SugarIngredient"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RaisinIngredient"/>
+        <Class IRI="#FruitIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SaltIngredient"/>
+        <Class IRI="#SavorySpiciesIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SavorySauceIngredient"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SavorySauceIngredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Savory"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SavorySpiciesIngredient"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>We don&apos;t want to label a dish as &quot;Savory&quot; just because it has some Salt or Ginger</Literal>
+        </Annotation>
+        <Class IRI="#SavorySpiciesIngredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Undefined"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ScrambledEggIngredient"/>
+        <Class IRI="#EggDerivedIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#StrawberrySauceIngredient"/>
+        <Class IRI="#SweetSauceIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SugarIngredient"/>
+        <Class IRI="#SweetSpiciesIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SweetSauceIngredient"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SweetSauceIngredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Sweet"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SweetSpiciesIngredient"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Again, we don&apos;t want to label a dish &quot;Sweet&quot; just because it has some sugar or cinnamon</Literal>
+        </Annotation>
+        <Class IRI="#SweetSpiciesIngredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Undefined"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VariedNutIngredient"/>
+        <Class IRI="#NutIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VeganButter"/>
+        <Class IRI="#VeganFatIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VeganFatIngredient"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VeganFatIngredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Undefined"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VeganPlainDish"/>
+        <Class IRI="#NamedDish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VeganPlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BakingPowderIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VeganPlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#BakingSodaIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VeganPlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#FlourIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VeganPlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#OilIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VeganPlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#SaltIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VeganPlainDish"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#SugarIngredient"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VeganPlainDish"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <ObjectUnionOf>
+                <Class IRI="#BakingPowderIngredient"/>
+                <Class IRI="#BakingSodaIngredient"/>
+                <Class IRI="#FlourIngredient"/>
+                <Class IRI="#OilIngredient"/>
+                <Class IRI="#SaltIngredient"/>
+                <Class IRI="#SugarIngredient"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VegetableIngredient"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VegetableIngredient"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasTasteProfile"/>
+            <NamedIndividual IRI="#Savory"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WalnutIngredient"/>
+        <Class IRI="#NutIngredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WheatFlourIngredient"/>
+        <Class IRI="#FlourIngredient"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#AnimalDerivedIngredient"/>
+        <Class IRI="#ChocolateIngredient"/>
+        <Class IRI="#FlourIngredient"/>
+        <Class IRI="#FruitIngredient"/>
+        <Class IRI="#GlutenFreeFlourIngredient"/>
+        <Class IRI="#NutIngredient"/>
+        <Class IRI="#SavorySauceIngredient"/>
+        <Class IRI="#SavorySpiciesIngredient"/>
+        <Class IRI="#SweetSauceIngredient"/>
+        <Class IRI="#SweetSpiciesIngredient"/>
+        <Class IRI="#VeganFatIngredient"/>
+        <Class IRI="#VegetableIngredient"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#AppleIngredient"/>
+        <Class IRI="#BananaIngredient"/>
+        <Class IRI="#FreshFruitIngredient"/>
+        <Class IRI="#RaisinIngredient"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#BaconIngredient"/>
+        <Class IRI="#HamIngredient"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#BakingPowderIngredient"/>
+        <Class IRI="#BakingSodaIngredient"/>
+        <Class IRI="#GingerIngredient"/>
+        <Class IRI="#SaltIngredient"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#BellPepperIngredient"/>
+        <Class IRI="#MushroomIngredient"/>
+        <Class IRI="#OnionIngredient"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#ButterIngredient"/>
+        <Class IRI="#DairyIngredient"/>
+        <Class IRI="#EggDerivedIngredient"/>
+        <Class IRI="#FishIngredient"/>
+        <Class IRI="#MeatIngredient"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#CashewIngredient"/>
+        <Class IRI="#VariedNutIngredient"/>
+        <Class IRI="#WalnutIngredient"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#CheeseIngredient"/>
+        <Class IRI="#MilkIngredient"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#CinnamonIngredient"/>
+        <Class IRI="#SugarIngredient"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#EggIngredient"/>
+        <Class IRI="#ScrambledEggIngredient"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Food"/>
+        <Class IRI="#TasteProfile"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#ForestDish"/>
+        <Class IRI="#GlutenFreePlainDish"/>
+        <Class IRI="#HamCheeseDish"/>
+        <Class IRI="#PlainDish"/>
+        <Class IRI="#VeganPlainDish"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#HoneyIngredient"/>
+        <Class IRI="#JamIngredient"/>
+        <Class IRI="#StrawberrySauceIngredient"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Ingredient"/>
+        <Class IRI="#PancakeDish"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OilIngredient"/>
+        <Class IRI="#VeganButter"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#TasteProfile"/>
+        <NamedIndividual IRI="#Sweet"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TasteProfile"/>
+        <NamedIndividual IRI="#Undefined"/>
+    </ClassAssertion>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasIngredient"/>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasIngredient"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isIngredientOf"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasIngredient"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasTasteProfile"/>
+        <Class IRI="#TasteProfile"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isIngredientOf"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
