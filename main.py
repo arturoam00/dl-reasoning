@@ -16,13 +16,8 @@ def main(file_name="dutch-pancakes.owx", class_name=None, *arg):
     print("Converting to binary conjunctions ...")
     gateway.convertToBinaryConjunctions(ontology)
 
-    # get the TBox axioms
-    tbox = ontology.tbox()
-    axioms = tbox.getAxioms()
-    concept_names = ontology.getConceptNames()
-
     # reason
-    el_reasoner = ELReasoner(axioms, concept_names)
+    el_reasoner = ELReasoner(ontology)
     el_reasoner.compute_hierarchy()
     el_reasoner.print_hierarchy()
 
