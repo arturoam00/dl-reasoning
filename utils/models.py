@@ -14,7 +14,7 @@ class ConceptType(Enum):
     NAME = "ConceptName"
     TOP = "TopConcept$"
     EXISTENTIAL = "ExistentialRoleRestriction"
-    CONJUCTION = "ConceptConjuction"
+    CONJUNCTION = "ConceptConjunction"
 
 
 class AxiomType(Enum):
@@ -41,8 +41,20 @@ class ConceptName(BaseExpression):
 
 
 class Concept(BaseExpression):
-    def get_conjuncts(self) -> set["Concept"]:
+    @property
+    def conjuncts(self) -> set["Concept"]:
+        assert self.type == ConceptType.CONJUNCTION.value
         return set(Concept(concept) for concept in self._expr.getConjuncts())
+
+    @property
+    def role(self) -> "Concept":
+        assert self.type == ConceptType.EXISTENTIAL.value
+        return Concept(self._expr.role())
+
+    @property
+    def filler(self) -> "Concept":
+        assert self.type == ConceptType.EXISTENTIAL.value
+        return Concept(self._expr.filler())
 
 
 class Axiom(BaseExpression):
@@ -67,5 +79,21 @@ class ELFactory:
     def get_gci(self, A: Concept, B: Concept) -> Axiom:
         return Axiom(self._el_factory.getGCI(A._concept, B._concept))
 
-    def get_top(self):
+    def get_top(self) -> Concept:
         return Concept(self._el_factory.getTop())
+
+    def get_concept_name(self, name: str) -> Concept:
+        return Concept(self._el_factory.getConceptName(name))
+
+    def get_role(self, role_name: str) -> Concept:
+        return Concept(self._el_factory.getRole(role_name))
+
+    def get_conjunction(self, A: Concept, B: Concept) -> Concept:
+        return Concept(self._el_factory.getConjunction(A._expr, B._expr))
+
+    def get_existential_role_restriction(
+        self, role: Concept, concept: Concept
+    ) -> Concept:
+        return Concept(
+            self._el_factory.getExistentialRoleRestriction(role._expr, concept._expr)
+        )

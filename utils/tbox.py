@@ -19,7 +19,7 @@ class TBox:
         if gci.rhs.type == ConceptType.CONJUCTION.value:
             return {
                 self.el_factory.get_gci(gci.lhs, concept)
-                for concept in gci.rhs.get_conjuncts()
+                for concept in gci.rhs.conjuncts
             }
         else:
             return {gci}

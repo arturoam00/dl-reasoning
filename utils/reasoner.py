@@ -8,11 +8,13 @@ el_factory = ELFactory(gateway.getELFactory())
 
 
 class ELReasoner:
-    def __init__(self, tbox_axioms: any, concept_names: any) -> None:
-        tbox_axioms = set(Axiom(axiom) for axiom in tbox_axioms)
-        self.tbox = TBox(tbox_axioms, el_factory)
+    def __init__(self, ontology: any) -> None:
+        self.tbox = TBox(
+            set(Axiom(axiom) for axiom in ontology.tbox().getAxioms()), el_factory
+        )
+        self.concepts = ontology.getSubConcepts()
+        self.concept_names = set(ConceptName(c) for c in ontology.getConceptNames())
         self.hierarchy = defaultdict(set)
-        self.concept_names = set(ConceptName(concept) for concept in concept_names)
 
     def compute_hierarchy(self):
         for concept in self.concept_names:
