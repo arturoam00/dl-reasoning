@@ -1,25 +1,31 @@
 #!/usr/bin/env python3
 
+import logging
 import sys
 
-from utils.java_gateway import gateway
+from utils import gateway
 from utils.reasoner import ELReasoner
 
 
-def main(file_name="dutch-pancakes.owx", class_name=None, *arg):
+def main(file_name: str, class_name: str) -> None:
+    log_level = logging.INFO
+    logging.basicConfig(
+        filename="dl-reasoning.log", filemode="w", encoding="utf-8", level=log_level
+    )
+    logger = logging.getLogger(__name__)
+
     parser = gateway.getOWLParser()
 
-    print("Loading the ontology ...")
+    logger.info("Loading the ontology ...")
     ontology = parser.parseFile(file_name)
-    print("Ontology loaded")
+    logger.info("Ontology loaded")
 
-    print("Converting to binary conjunctions ...")
+    logger.info("Converting to binary conjunctions ...")
     gateway.convertToBinaryConjunctions(ontology)
 
-    # reason
     el_reasoner = ELReasoner(ontology)
-    el_reasoner.compute_hierarchy()
-    el_reasoner.print_hierarchy()
+
+    el_reasoner.get_subsumees(class_name)
 
 
 if __name__ == "__main__":

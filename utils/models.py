@@ -5,7 +5,7 @@ of the Java classes coming from dl4python.
 
 from enum import Enum
 
-from utils.java_gateway import gateway
+from utils import gateway
 
 formatter = gateway.getSimpleDLFormatter()
 
@@ -31,6 +31,12 @@ class BaseExpression:
     @property
     def type(self) -> str:
         return self._expr.getClass().getSimpleName()
+
+    def __eq__(self, __value: object) -> bool:
+        return self._expr == __value._expr
+
+    def __hash__(self) -> int:
+        return hash(self._expr)
 
     def __str__(self) -> str:
         return formatter.format(self._expr)
@@ -60,10 +66,12 @@ class Concept(BaseExpression):
 class Axiom(BaseExpression):
     @property
     def rhs(self) -> Concept:
+        assert self.type == AxiomType.GCI.value
         return Concept(self._expr.rhs())
 
     @property
     def lhs(self) -> Concept:
+        assert self.type == AxiomType.GCI.value
         return Concept(self._expr.lhs())
 
     def get_concepts(self) -> set[Concept]:
@@ -77,7 +85,7 @@ class ELFactory:
         self._el_factory = el_factory
 
     def get_gci(self, A: Concept, B: Concept) -> Axiom:
-        return Axiom(self._el_factory.getGCI(A._concept, B._concept))
+        return Axiom(self._el_factory.getGCI(A._expr, B._expr))
 
     def get_top(self) -> Concept:
         return Concept(self._el_factory.getTop())

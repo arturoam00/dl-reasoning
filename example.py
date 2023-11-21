@@ -32,7 +32,7 @@ def main(file_name, class_name=None, *arg):
     tbox = ontology.tbox()
     axioms = tbox.getAxioms()
 
-    print("These are the axioms in the TBox:")
+    print(f"These are the ({len(axioms)}) axioms in the TBox:")
     for axiom in axioms:
         print(formatter.format(axiom))
 
