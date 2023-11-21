@@ -82,6 +82,15 @@ class Model:
             )
         return concepts
 
+    def get_new_concepts_from_tbox(self, concept: Concept) -> set[Concept]:
+        concepts = set()
+
+        for axiom in self.gci_axioms:
+            if concept == axiom.lhs:
+                concepts |= self.get_new_concepts(axiom.rhs)
+
+        return concepts
+
     def get_new_individual(self, concept: Concept) -> Individual:
         for inidividual in self.individuals:
             if inidividual.initial_concept == concept:
@@ -141,9 +150,7 @@ class Model:
         new_concepts = set()
 
         for concept in individual.concepts:
-            for axiom in self.gci_axioms:
-                if concept == axiom.lhs:
-                    new_concepts |= self.get_new_concepts(axiom.rhs)
+            new_concepts |= self.get_new_concepts_from_tbox(concept)
 
         return new_concepts
 
