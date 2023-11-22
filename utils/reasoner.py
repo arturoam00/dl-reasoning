@@ -116,9 +116,9 @@ class Model:
         self.log = logger.getChild("Model")
 
     def get_new_concepts(self, *args: Concept | set[Concept]) -> set[Concept]:
-        """We have found some potentially new concepts to add
-        to the individual, but first one have to check whether
-        the concepts are present in the input concepts
+        """We have found some potentially new concepts to add to the individual,
+        but first one have to check whether the concepts are present in the
+        input concepts
         """
         concepts = set()
 
@@ -314,11 +314,17 @@ class ELReasoner:
     def print_hierarchy(self) -> None:
         raise NotImplementedError
 
-    def get_subsumees(self, concept_name: str) -> None:
-        subsumees = set()
+    def get_concept_hierarchy(self, concept_name: str, upwards: bool = True) -> None:
+        concepts = set()
         for concept in self.concept_names:
-            if self.is_subsumed_by(subsumee=concept, subsumer=concept_name):
-                subsumees.add(concept)
+            result = (
+                self.is_subsumed_by(subsumee=concept_name, subsumer=concept)
+                if upwards
+                else self.is_subsumed_by(subsumee=concept, subsumer=concept_name)
+            )
 
-        for s in subsumees:
-            print(s)
+            if result:
+                concepts.add(concept)
+
+        for c in concepts:
+            print(c)
