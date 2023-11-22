@@ -4,6 +4,7 @@ of the Java classes coming from dl4python.
 """
 
 from enum import Enum
+from typing import Any
 
 from utils import gateway
 
@@ -22,10 +23,21 @@ class AxiomType(Enum):
     EQUIVALENCE = "EquivalenceAxiom"
 
 
-class BaseExpression:
-    _expr: any
+JavaObject = Any
 
-    def __init__(self, expr: any) -> None:
+
+class BaseExpression:
+    """
+    Base encapsulating class for the Java objects
+    coming from dl4python. The Java object is kept
+    in `_expr`
+
+    Mainly useful for concepts and axioms so far
+    """
+
+    _expr: JavaObject
+
+    def __init__(self, expr: JavaObject) -> None:
         self._expr = expr
 
     @property
@@ -79,9 +91,20 @@ class Axiom(BaseExpression):
 
 
 class ELFactory:
-    _el_factory: any
+    """
+    Encapsulating the class returned by getELFactory()
 
-    def __init__(self, el_factory: any) -> None:
+    Java object is kept in _el_factory
+
+    It's important to remember to pass the actual Java
+    objects to the Java methods and not the Python objects
+
+    One does it accessing the `_expr` attribute
+    """
+
+    _el_factory: JavaObject
+
+    def __init__(self, el_factory: JavaObject) -> None:
         self._el_factory = el_factory
 
     def get_gci(self, A: Concept, B: Concept) -> Axiom:
