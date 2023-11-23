@@ -54,10 +54,6 @@ class BaseExpression:
         return formatter.format(self._expr)
 
 
-class ConceptName(BaseExpression):
-    pass
-
-
 class Concept(BaseExpression):
     @property
     def conjuncts(self) -> set["Concept"]:

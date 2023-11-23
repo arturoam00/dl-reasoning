@@ -1,10 +1,12 @@
 from collections import defaultdict
-from dataclasses import dataclass, field
+from typing import Dict, Optional, Set
 
-from utils.models import Concept
+from utils.models import Concept, ELFactory
+
+el_factory = ELFactory()
+top = el_factory.get_top()
 
 
-@dataclass
 class Individual:
     """
     Individual must be initialized with initial concept
@@ -21,12 +23,13 @@ class Individual:
     """
 
     initial_concept: Concept
+    concepts: Set[Concept]
+    successors: Dict[Concept, Set[Optional["Individual"]]]
 
-    concepts: set[Concept] = field(default_factory=set)
-
-    successors: dict[Concept, set["Individual"]] = field(
-        default_factory=lambda: defaultdict(set)
-    )
+    def __init__(self, initial_concept: Concept) -> None:
+        self.initial_concept = initial_concept
+        self.concepts = {top, self.initial_concept}
+        self.successors = defaultdict(set)
 
     def add_concept(self, concept: Concept) -> None:
         self.concepts.add(concept)

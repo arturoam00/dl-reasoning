@@ -1,7 +1,7 @@
 import logging
 from collections import defaultdict
+from typing import Dict, List, Optional, Set, Tuple
 
-from utils import gateway
 from utils.model import Model
 from utils.models import Axiom, Concept, ELFactory
 from utils.tbox import TBox
@@ -9,21 +9,21 @@ from utils.tbox import TBox
 logger = logging.getLogger(__name__)
 
 el_factory = ELFactory()
+top = el_factory.get_top()
 
 
 class ELReasoner:
     tbox: TBox
-    concepts: set[Concept]
-    concept_names: set[Concept]
-    hierarchy: dict[str, set[Concept]]
+    concepts: Set[Concept]
+    concept_names: Set[Concept]
+
+    hierarchy: Dict[str, Set[Concept]]
     is_classified: bool
 
     log: logging.Logger
 
     def __init__(self, ontology: any) -> None:
-        self.tbox = TBox(
-            set(Axiom(axiom) for axiom in ontology.tbox().getAxioms()), el_factory
-        )
+        self.tbox = TBox(set(Axiom(axiom) for axiom in ontology.tbox().getAxioms()))
         self.concepts = set(Concept(c) for c in ontology.getSubConcepts())
         self.concept_names = set(Concept(c) for c in ontology.getConceptNames())
 
@@ -32,51 +32,55 @@ class ELReasoner:
 
         self.log = logger.getChild("ELReasoner")
 
-    def log_results(self, subsumee: Concept, subsumer: Concept, result: bool) -> None:
-        msg = (
-            f"{subsumee} IS subsumed by {subsumer}\n\n"
-            if result
-            else f"{subsumee} is NOT subsumed by {subsumer}"
-        )
-        self.log.info(msg)
-        self.log.info(f"The subsumers of {subsumee} have been added to hierarchy\n\n")
-
-    def is_subsumed_by(self, subsumee: str | Concept, subsumer: str | Concept) -> bool:
-        concepts = {"subsumee": subsumee, "subsumer": subsumer}
-        for id, concept in concepts.items():
+    def validate_concepts(
+        self,
+        *concepts: str | Concept,
+    ) -> List[Concept]:
+        output = []
+        for concept in concepts:
             if isinstance(concept, str):
-                concepts[id] = el_factory.get_concept_name(concept)
+                concept = el_factory.get_concept_name(concept)
+            output.append(concept)
 
-        assert set(concepts.values()) <= self.concepts
+        assert set(output) <= self.concepts
 
+        return output
+
+    def validate_concept(
+        self,
+        concept: str | Concept,
+    ) -> Concept:
+        try:
+            return self.validate_concepts(concept)[0]
+        except AssertionError:
+            msg = f'Invalid class name {concept}. Maybe you forgot the " "? Or maybe it\'s better without them?'
+            raise AssertionError(msg)
+
+    def is_subsumed_by(
+        self,
+        subsumee: str | Concept,
+        subsumer: str | Concept,
+    ) -> bool:
         self.log.info(f"Trying to find a model for O |= {subsumee} ⊑ {subsumer}\n\n")
 
-        input_concepts = self.concepts | set(concepts.values())
+        subsumee, subsumer = self.validate_concepts(subsumee, subsumer)
 
-        model = Model(input_concepts=input_concepts, axioms=self.tbox.normalized)
-
-        result = model.apply_rules(**concepts)
-
-        self.hierarchy[subsumee] |= set(
-            c for c in model.initial_individual.concepts if c in self.concept_names
-        )
+        model = self._build_model(subsumee=subsumee, subsumer=subsumer)
+        result = model.apply_rules()
 
         self.log_results(subsumee, subsumer, result)
 
         return result
 
     def classify(self) -> None:
-        top = el_factory.get_top()
         for concept in self.concept_names:
-            self.is_subsumed_by(subsumee=concept, subsumer=top)
+            self._compute_subsumers(subsumee=concept)
 
         self._complete_hierarchy()
         self.is_classified = True
 
     def get_subsumers(self, subsumee: str | Concept) -> None:
-        if isinstance(subsumee, str):
-            subsumee = el_factory.get_concept_name(subsumee)
-
+        subsumee = self.validate_concept(subsumee)
         if self.is_classified:
             for c in self.hierarchy[subsumee]:
                 print(c)
@@ -87,16 +91,59 @@ class ELReasoner:
         for c in self.hierarchy[subsumee]:
             print(c)
 
+    def log_results(
+        self,
+        subsumee: Concept,
+        subsumer: Concept,
+        result: bool,
+    ) -> None:
+        msg = (
+            f"{subsumee} IS subsumed by {subsumer}\n\n"
+            if result
+            else f"{subsumee} is NOT subsumed by {subsumer}"
+        )
+        self.log.info(msg)
+
+    def _build_model(
+        self,
+        subsumee: Concept,
+        subsumer: Optional[Concept] = None,
+    ) -> Model:
+        if not subsumer:
+            subsumer = top
+
+        input_concepts = self.concepts | {subsumee, subsumer}
+        model = Model(input_concepts=input_concepts, axioms=self.tbox.normalized)
+        model.initialize_model(subsumee=subsumee, subsumer=subsumer)
+        return model
+
+    def _compute_subsumers(self, subsumee: Concept) -> None:
+        self.log.info(f"Computing subsumers of {subsumee}\n\n")
+
+        model = self._build_model(subsumee=subsumee)
+        model.apply_rules()
+
+        self.hierarchy[model.subsumee] |= set(
+            c
+            for c in model.initial_individual.concepts
+            if (c in self.concept_names or c == top)
+        )
+
+        self.log.info(f"Subsumers of {subsumee} have been added to hierarchy")
+
+    def _complete_hierarchy(self) -> None:
+        for subsumee in self.hierarchy:
+            self._fill_all_subsumers(subsumee)
+
     def _fill_all_subsumers(self, subsumee: Concept) -> None:
-        top = el_factory.get_top()
         added = set()
 
         if not self.hierarchy.get(subsumee):
-            self.is_subsumed_by(subsumee, top)
+            self._compute_subsumers(subsumee=subsumee)
 
         for subsumer in self.hierarchy[subsumee]:
             if not self.hierarchy.get(subsumer):
-                self.is_subsumed_by(subsumer, top)
+                self._compute_subsumers(subsumee=subsumer)
 
             added |= self.hierarchy[subsumer] - self.hierarchy[subsumee]
 
@@ -105,7 +152,3 @@ class ELReasoner:
             self._fill_all_subsumers(subsumee)
         else:
             return
-
-    def _complete_hierarchy(self) -> None:
-        for subsumee in self.hierarchy:
-            self._fill_all_subsumers(subsumee)

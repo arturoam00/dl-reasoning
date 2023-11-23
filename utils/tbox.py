@@ -11,20 +11,20 @@ from copy import copy
 
 from utils.models import Axiom, AxiomType, ELFactory
 
+el_factory = ELFactory()
+
 
 class TBox:
     axioms: set[Axiom]
     normalized: set[Axiom]
-    el_factory: ELFactory
 
-    def __init__(self, axioms: set[Axiom], el_factory: ELFactory) -> None:
+    def __init__(self, axioms: set[Axiom]) -> None:
         self.axioms = axioms
-        self.el_factory = el_factory
         self.normalized = self.get_normalized_axioms()
 
     def resolve_equivalence(self, equivalence: Axiom) -> set[Axiom]:
         A, B = equivalence.get_concepts()
-        return {self.el_factory.get_gci(A, B), self.el_factory.get_gci(B, A)}
+        return {el_factory.get_gci(A, B), el_factory.get_gci(B, A)}
 
     def resolve_gci(self, gci: Axiom) -> set[Axiom]:
         """Should one deal with more stuff in the TBox ?"""
@@ -38,7 +38,6 @@ class TBox:
             if axiom.type == AxiomType.EQUIVALENCE.value:
                 normalized |= self.resolve_equivalence(axiom)
                 terminate = False
-
             else:
                 normalized.add(axiom)
 
