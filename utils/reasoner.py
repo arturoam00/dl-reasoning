@@ -1,6 +1,7 @@
 import logging
 from collections import defaultdict
-from typing import Dict, List, Optional, Set, Tuple
+from copy import copy
+from typing import Dict, List, Optional, Set
 
 from utils.model import Model
 from utils.models import Axiom, Concept, ELFactory
@@ -42,7 +43,9 @@ class ELReasoner:
                 concept = el_factory.get_concept_name(concept)
             output.append(concept)
 
-        assert set(output) <= self.concepts
+        assert (
+            set(output) <= self.concepts
+        ), f"Some of the concepts in {list(str(c) for c in output)} are invalid."
 
         return output
 
@@ -132,7 +135,8 @@ class ELReasoner:
         self.log.info(f"Subsumers of {subsumee} have been added to hierarchy")
 
     def _complete_hierarchy(self) -> None:
-        for subsumee in self.hierarchy:
+        all_subsumees = set(self.hierarchy.keys())
+        for subsumee in all_subsumees:
             self._fill_all_subsumers(subsumee)
 
     def _fill_all_subsumers(self, subsumee: Concept) -> None:

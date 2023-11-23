@@ -62,7 +62,11 @@ class Model:
 
     log: logging.Logger
 
-    def __init__(self, input_concepts: Set[Concept], axioms: Set[Axiom]) -> None:
+    def __init__(
+        self,
+        input_concepts: Set[Concept],
+        axioms: Set[Axiom],
+    ) -> None:
         self.input_concepts = input_concepts
         self.gci_axioms = set(
             axiom for axiom in axioms if axiom.type == AxiomType.GCI.value
@@ -75,7 +79,11 @@ class Model:
 
         self.log = logger.getChild("Model")
 
-    def initialize_model(self, subsumee: Concept, subsumer: Concept) -> None:
+    def initialize_model(
+        self,
+        subsumee: Concept,
+        subsumer: Concept,
+    ) -> None:
         self.initial_individual = Individual(subsumee)
         self.subsumer = subsumer
         self.individuals.clear()
@@ -87,7 +95,10 @@ class Model:
     def subsumee(self) -> Concept:
         return self.initial_individual.initial_concept
 
-    def get_new_concepts(self, *concepts: Concept | Set[Concept]) -> Set[Concept]:
+    def get_new_concepts(
+        self,
+        *concepts: Concept | Set[Concept],
+    ) -> Set[Concept]:
         """We have found some potentially new concepts to add to the individual,
         but first one have to check whether the concepts are present in the
         input concepts
@@ -103,7 +114,9 @@ class Model:
         return new_concepts
 
     def get_new_concepts_from_successor(
-        self, role: Concept, successor: Individual
+        self,
+        role: Concept,
+        successor: Individual,
     ) -> Set[Concept]:
         new_concepts = set()
 
@@ -113,7 +126,10 @@ class Model:
             )
         return new_concepts
 
-    def get_new_concepts_from_tbox(self, concept: Concept) -> Set[Concept]:
+    def get_new_concepts_from_tbox(
+        self,
+        concept: Concept,
+    ) -> Set[Concept]:
         new_concepts = set()
 
         for axiom in self.gci_axioms:
@@ -122,7 +138,10 @@ class Model:
 
         return new_concepts
 
-    def get_new_individual(self, concept: Concept) -> Individual:
+    def get_new_individual(
+        self,
+        concept: Concept,
+    ) -> Individual:
         # If there is an element `individual` with initial concept `concept` assigned,
         # return that element
         for inidividual in self.individuals:
@@ -135,7 +154,10 @@ class Model:
 
         return new_individual
 
-    def first_conj_rule(self, individual: Individual) -> Set[Concept]:
+    def first_conj_rule(
+        self,
+        individual: Individual,
+    ) -> Set[Concept]:
         """⊓-rule 1: If d has C ⊓ D assigned, assign also C and D to d."""
         new_concepts = set()
 
@@ -145,7 +167,10 @@ class Model:
 
         return new_concepts
 
-    def second_conj_rule(self, individual: Individual) -> Set[Concept]:
+    def second_conj_rule(
+        self,
+        individual: Individual,
+    ) -> Set[Concept]:
         """⊓-rule 2: If d has C and D assigned, assign also C ⊓ D to d."""
         new_concepts = set()
 
@@ -156,7 +181,10 @@ class Model:
 
         return new_concepts
 
-    def first_exist_rule(self, individual: Individual) -> RelationsDict:
+    def first_exist_rule(
+        self,
+        individual: Individual,
+    ) -> RelationsDict:
         """∃-rule 1: If d has ∃r .C assigned:
 
         1. If there is an element e with initial concept C assigned, make
@@ -175,7 +203,10 @@ class Model:
 
         return new_successors
 
-    def second_exist_rule(self, individual: Individual) -> Set[Concept]:
+    def second_exist_rule(
+        self,
+        individual: Individual,
+    ) -> Set[Concept]:
         """∃-rule 2: If d has an r -successor with C assigned, add ∃r .C to d."""
         new_concepts = set()
 
@@ -185,7 +216,10 @@ class Model:
 
         return new_concepts
 
-    def contained_rule(self, individual: Individual) -> Set[Concept]:
+    def contained_rule(
+        self,
+        individual: Individual,
+    ) -> Set[Concept]:
         """⊑-rule: If d has C assigned and C ⊑ D ∈ T , then also assign D to d"""
         new_concepts = set()
 
@@ -194,7 +228,10 @@ class Model:
 
         return new_concepts
 
-    def log_individual_state(self, individual: Individual) -> None:
+    def log_individual_state(
+        self,
+        individual: Individual,
+    ) -> None:
         self.log.info(
             f"{'':<4}Concepts of inidividual with main concept {individual.initial_concept} ({len(individual.concepts)}):"
         )
@@ -251,17 +288,15 @@ class Model:
                 # apply rules ⊓-rule 1, ⊓-rule 2, ∃-rule 2 and ⊑-rule
                 for rule in concept_rules:
                     new_concepts = rule(individual)
-                    CHANGED = True if not new_concepts <= individual.concepts else False
+                    if not new_concepts <= individual.concepts:
+                        CHANGED = True
                     individual.concepts |= new_concepts
 
                 # ∃-rule 1
                 # this rule can't add concepts but successors
                 new_successors = self.first_exist_rule(individual)
-                CHANGED = (
-                    True
-                    if not new_successors.items() <= individual.successors.items()
-                    else False
-                )
+                if not new_successors.items() <= individual.successors.items():
+                    CHANGED = True
                 individual.successors.update(new_successors)
 
                 self.log_individual_state(individual)

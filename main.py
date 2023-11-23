@@ -7,7 +7,10 @@ from utils import gateway
 from utils.reasoner import ELReasoner
 
 
-def main(file_name: str, class_name: str) -> None:
+def main(
+    file_name: str = "ontologies/pizza.owl",
+    class_name: str = '"Margherita"',
+) -> None:
     log_level = logging.INFO
     logging.basicConfig(
         filename="dl-reasoning.log", filemode="w", encoding="utf-8", level=log_level
