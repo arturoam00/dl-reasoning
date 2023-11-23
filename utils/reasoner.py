@@ -332,11 +332,12 @@ class ELReasoner:
 
     def log_results(self, subsumee: Concept, subsumer: Concept, result: bool) -> None:
         msg = (
-            f"\n\n{subsumee} IS subsumed by {subsumer}"
+            f"{subsumee} IS subsumed by {subsumer}\n\n"
             if result
-            else f"{subsumee} is NOT subsumed by {subsumer}\n\n"
+            else f"{subsumee} is NOT subsumed by {subsumer}"
         )
         self.log.info(msg)
+        self.log.info(f"The subsumers of {subsumee} have been added to hierarchy\n\n")
 
     def is_subsumed_by(self, subsumee: str | Concept, subsumer: str | Concept) -> bool:
         concepts = {"subsumee": subsumee, "subsumer": subsumer}
