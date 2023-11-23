@@ -4,7 +4,7 @@ of the Java classes coming from dl4python.
 """
 
 from enum import Enum
-from typing import Any
+from typing import Any, Optional
 
 from utils import gateway
 
@@ -102,10 +102,14 @@ class ELFactory:
     One does it accessing the `_expr` attribute
     """
 
-    _el_factory: JavaObject
+    _instance: Optional["ELFactory"] = None
+    _el_factory: Optional[JavaObject] = None
 
-    def __init__(self, el_factory: JavaObject) -> None:
-        self._el_factory = el_factory
+    def __new__(cls, *args, **kwargs) -> "ELFactory":
+        if not cls._instance:
+            cls._instance = super().__new__(cls, *args, **kwargs)
+            cls._instance._el_factory = gateway.getELFactory()
+        return cls._instance
 
     def get_gci(self, A: Concept, B: Concept) -> Axiom:
         return Axiom(self._el_factory.getGCI(A._expr, B._expr))
