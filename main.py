@@ -25,7 +25,7 @@ def main(file_name: str, class_name: str) -> None:
 
     el_reasoner = ELReasoner(ontology)
 
-    el_reasoner.get_concept_hierarchy(concept_name=class_name, upwards=True)
+    el_reasoner.get_subsumers(class_name)
 
 
 if __name__ == "__main__":

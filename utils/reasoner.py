@@ -1,5 +1,6 @@
 import logging
 from collections import defaultdict
+from copy import copy
 from dataclasses import dataclass, field
 
 from utils import gateway
@@ -48,11 +49,7 @@ class Individual:
         return hash(self.initial_concept)
 
     def __str__(self) -> str:
-        concepts = ""
-        for concept in self.concepts:
-            concepts += f"{'':<4}{concept}\n"
-
-        return f"{self.initial_concept}\n{concepts}"
+        return str(self.initial_concept)
 
 
 RelationsDict = dict[Concept, set[Individual]]
@@ -99,6 +96,7 @@ class Model:
     input_concepts: set[Concept]
     axioms: set[Axiom]
     individuals: set[Individual]
+    initial_individual: Individual
 
     _temp_individuals: set[Individual]
 
@@ -110,8 +108,8 @@ class Model:
             axiom for axiom in axioms if axiom.type == AxiomType.GCI.value
         )
         self.individuals = set()
-
         self._temp_individuals = set()
+        self.initial_individual = None
 
         self.log = logger.getChild("Model")
 
@@ -228,20 +226,46 @@ class Model:
 
         return new_concepts
 
+    def log_individual_state(self, individual: Individual):
+        self.log.info(
+            f"{'':<4}Concepts of inidividual with main concept {individual.initial_concept} ({len(individual.concepts)}):"
+        )
+
+        for c in individual.concepts:
+            self.log.info(f"{'':<8}- {c}")
+
+        self.log.info(f"{'':<4}Its relations are:")
+        for r in individual.successors.keys():
+            self.log.info(f"{'':<4}{r} - successors:")
+            for s in individual.successors[r]:
+                self.log.info(
+                    f"{'':<8}- {s.initial_concept}: {[str(c) for c in s.concepts]}"
+                )
+
+    def log_state(self):
+        self.log.info(f"{'-' * 80}")
+        self.log.info(
+            f"There are currently {len(self.individuals)} individuals in the model"
+        )
+        self.log.info(
+            f"The initial concepts happening are: {[str(i.initial_concept) for i in self.individuals]}"
+        )
+        self.log.info(f"{'-' * 80}")
+
     def apply_rules(self, subsumee: Concept, subsumer: Concept) -> bool:
         """Decide whether O |= `subsumee` ⊑ `subsumer`
 
-        1. Start with initial element `child`, assigned as initial concept `subsumee`.
+        1. Start with initial element `initial_individual`, assigned as initial concept `subsumee`.
 
         2. Apply the EL-completion rules exhaustively, with the restriction that only
         concepts from the input are assigned.
         """
         # create and add first individual to model
-        child = Individual(subsumee)
-        self.individuals.add(child)
+        self.initial_individual = Individual(subsumee)
+        self.individuals.add(self.initial_individual)
 
         # ⊤-rule
-        self.zero_rule(child)
+        self.zero_rule(self.initial_individual)
 
         # rules that can add concepts to individuals
         concept_rules = [
@@ -250,6 +274,9 @@ class Model:
             self.second_exist_rule,  # ∃-rule 2
             self.contained_rule,  # ⊑-rule
         ]
+
+        self.log.info("Starting to apply rules exhaustively ...")
+        self.log_state()
 
         CHANGED = True
         while CHANGED:
@@ -272,17 +299,22 @@ class Model:
                 )
                 individual.successors.update(new_relations)
 
+                self.log_individual_state(individual)
+
             # add potentially newly created individuals (in ∃-rule 1) to model
             self.individuals |= self._temp_individuals
 
-        return subsumer in child.concepts
+            self.log_state()
+
+        return subsumer in self.initial_individual.concepts
 
 
 class ELReasoner:
     tbox: TBox
     concepts: set[Concept]
     concept_names: set[Concept]
-    # hierarchy: dict[str, set[Concept]]
+    hierarchy: dict[str, set[Concept]]
+    is_classified: bool
 
     log: logging.Logger
 
@@ -293,11 +325,20 @@ class ELReasoner:
         self.concepts = set(Concept(c) for c in ontology.getSubConcepts())
         self.concept_names = set(Concept(c) for c in ontology.getConceptNames())
 
-        # self.hierarchy = defaultdict(set)
+        self.hierarchy = defaultdict(set)
+        self.is_classified = False
 
         self.log = logger.getChild("ELReasoner")
 
-    def is_subsumed_by(self, subsumee: str | Concept, subsumer: str | Concept) -> str:
+    def log_results(self, subsumee: Concept, subsumer: Concept, result: bool) -> None:
+        msg = (
+            f"\n\n{subsumee} IS subsumed by {subsumer}"
+            if result
+            else f"{subsumee} is NOT subsumed by {subsumer}\n\n"
+        )
+        self.log.info(msg)
+
+    def is_subsumed_by(self, subsumee: str | Concept, subsumer: str | Concept) -> bool:
         concepts = {"subsumee": subsumee, "subsumer": subsumer}
         for id, concept in concepts.items():
             if isinstance(concept, str):
@@ -305,26 +346,58 @@ class ELReasoner:
 
         assert set(concepts.values()) <= self.concepts
 
-        model = Model(input_concepts=self.concepts, axioms=self.tbox.normalized)
-        return model.apply_rules(**concepts)
+        self.log.info(f"Trying to find a model for O |= {subsumee} ⊑ {subsumer}\n\n")
+
+        input_concepts = self.concepts | set(concepts.values())
+
+        model = Model(input_concepts=input_concepts, axioms=self.tbox.normalized)
+
+        result = model.apply_rules(**concepts)
+
+        self.hierarchy[subsumee] |= set(
+            c for c in model.initial_individual.concepts if c in self.concept_names
+        )
+
+        self.log_results(subsumee, subsumer, result)
+
+        return result
 
     def classify(self) -> None:
-        raise NotImplementedError
-
-    def print_hierarchy(self) -> None:
-        raise NotImplementedError
-
-    def get_concept_hierarchy(self, concept_name: str, upwards: bool = True) -> None:
-        concepts = set()
+        top = el_factory.get_top()
         for concept in self.concept_names:
-            result = (
-                self.is_subsumed_by(subsumee=concept_name, subsumer=concept)
-                if upwards
-                else self.is_subsumed_by(subsumee=concept, subsumer=concept_name)
-            )
+            self.is_subsumed_by(subsumee=concept, subsumer=top)
 
-            if result:
-                concepts.add(concept)
+        self._complete_hierarchy()
+        self.is_classified = True
 
-        for c in concepts:
+    def get_subsumers(self, subsumee: str | Concept) -> None:
+        if isinstance(subsumee, str):
+            subsumee = el_factory.get_concept_name(subsumee)
+
+        self._fill_all_subsumers(subsumee)
+
+        for c in self.hierarchy[subsumee]:
             print(c)
+
+    def _fill_all_subsumers(self, subsumee: Concept) -> None:
+        top = el_factory.get_top()
+        added = set()
+
+        if not self.hierarchy.get(subsumee):
+            self.is_subsumed_by(subsumee, top)
+
+        for subsumer in self.hierarchy[subsumee]:
+            if not self.hierarchy.get(subsumer):
+                self.is_subsumed_by(subsumer, top)
+
+            added |= self.hierarchy[subsumer] - self.hierarchy[subsumee]
+
+        self.hierarchy[subsumee] |= added
+        if added:
+            self._fill_all_subsumers(subsumee)
+        else:
+            return
+
+    def _complete_hierarchy(self) -> None:
+        for subsumee in self.hierarchy:
+            self._fill_all_subsumers(subsumee)
