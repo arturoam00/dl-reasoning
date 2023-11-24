@@ -8,8 +8,8 @@ from utils.reasoner import ELReasoner
 
 
 def main(
-    file_name: str = "ontologies/pizza.owl",
-    class_name: str = '"Margherita"',
+    file_name: str,
+    class_name: str,
 ) -> None:
     log_level = logging.INFO
     logging.basicConfig(
@@ -28,7 +28,7 @@ def main(
 
     el_reasoner = ELReasoner(ontology)
 
-    el_reasoner.get_subsumers(class_name)
+    el_reasoner.get_subsumers(class_name, print_output=False)
 
 
 if __name__ == "__main__":

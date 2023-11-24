@@ -1,7 +1,6 @@
 import logging
 from collections import defaultdict
-from copy import copy
-from typing import Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional, Set
 
 from utils.model import Model
 from utils.models import Axiom, Concept, ELFactory
@@ -23,7 +22,7 @@ class ELReasoner:
 
     log: logging.Logger
 
-    def __init__(self, ontology: any) -> None:
+    def __init__(self, ontology: Any) -> None:
         self.tbox = TBox(set(Axiom(axiom) for axiom in ontology.tbox().getAxioms()))
         self.concepts = set(Concept(c) for c in ontology.getSubConcepts())
         self.concept_names = set(Concept(c) for c in ontology.getConceptNames())
@@ -77,22 +76,28 @@ class ELReasoner:
 
     def classify(self) -> None:
         for concept in self.concept_names:
-            self._compute_subsumers(subsumee=concept)
+            self._fill_all_subsumers(concept)
 
-        self._complete_hierarchy()
         self.is_classified = True
 
-    def get_subsumers(self, subsumee: str | Concept) -> None:
+    def get_subsumers(
+        self,
+        subsumee: str | Concept,
+        print_output: bool = True,
+    ) -> None:
         subsumee = self.validate_concept(subsumee)
-        if self.is_classified:
-            for c in self.hierarchy[subsumee]:
-                print(c)
-                return
+
+        if self.is_classified and print_output:
+            self.print_subsumers(subsumee)
+            return
 
         self._fill_all_subsumers(subsumee)
+        if print_output:
+            self.print_subsumers(subsumee)
 
-        for c in self.hierarchy[subsumee]:
-            print(c)
+    def print_subsumers(self, subsumee: Concept) -> None:
+        for subsumer in self.hierarchy[subsumee]:
+            print(subsumer)
 
     def log_results(
         self,
@@ -134,11 +139,6 @@ class ELReasoner:
 
         self.log.info(f"Subsumers of {subsumee} have been added to hierarchy")
 
-    def _complete_hierarchy(self) -> None:
-        all_subsumees = set(self.hierarchy.keys())
-        for subsumee in all_subsumees:
-            self._fill_all_subsumers(subsumee)
-
     def _fill_all_subsumers(self, subsumee: Concept) -> None:
         added = set()
 
@@ -152,7 +152,5 @@ class ELReasoner:
             added |= self.hierarchy[subsumer] - self.hierarchy[subsumee]
 
         self.hierarchy[subsumee] |= added
-        if added:
+        while added:
             self._fill_all_subsumers(subsumee)
-        else:
-            return
