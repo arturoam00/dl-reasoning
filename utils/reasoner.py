@@ -87,11 +87,9 @@ class ELReasoner:
     ) -> None:
         subsumee = self.validate_concept(subsumee)
 
-        if self.is_classified and print_output:
-            self.print_subsumers(subsumee)
-            return
+        if not self.is_classified:
+            self._fill_all_subsumers(subsumee)
 
-        self._fill_all_subsumers(subsumee)
         if print_output:
             self.print_subsumers(subsumee)
 
