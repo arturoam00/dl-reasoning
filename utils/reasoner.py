@@ -1,6 +1,6 @@
 import logging
 from collections import defaultdict
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, DefaultDict, List, Optional, Set
 
 from utils.model import Model
 from utils.models import Axiom, Concept, ELFactory
@@ -17,7 +17,7 @@ class ELReasoner:
     concepts: Set[Concept]
     concept_names: Set[Concept]
 
-    hierarchy: Dict[str, Set[Concept]]
+    hierarchy: DefaultDict[Concept, Set[Concept]]
     is_classified: bool
 
     log: logging.Logger
@@ -67,7 +67,7 @@ class ELReasoner:
 
         subsumee, subsumer = self.validate_concepts(subsumee, subsumer)
 
-        model = self._build_model(subsumee=subsumee, subsumer=subsumer)
+        model = self.build_model(subsumee=subsumee, subsumer=subsumer)
         result = model.apply_rules()
 
         self.log_results(subsumee, subsumer, result)
@@ -76,7 +76,7 @@ class ELReasoner:
 
     def classify(self) -> None:
         for concept in self.concept_names:
-            self._fill_all_subsumers(concept)
+            self.fill_all_subsumers(concept)
 
         self.is_classified = True
 
@@ -88,7 +88,7 @@ class ELReasoner:
         subsumee = self.validate_concept(subsumee)
 
         if not self.is_classified:
-            self._fill_all_subsumers(subsumee)
+            self.fill_all_subsumers(subsumee)
 
         if print_output:
             self.print_subsumers(subsumee)
@@ -110,7 +110,7 @@ class ELReasoner:
         )
         self.log.info(msg)
 
-    def _build_model(
+    def build_model(
         self,
         subsumee: Concept,
         subsumer: Optional[Concept] = None,
@@ -123,32 +123,30 @@ class ELReasoner:
         model.initialize_model(subsumee=subsumee, subsumer=subsumer)
         return model
 
-    def _compute_subsumers(self, subsumee: Concept) -> None:
+    def compute_subsumers(self, subsumee: Concept) -> None:
         self.log.info(f"Computing subsumers of {subsumee}\n\n")
 
-        model = self._build_model(subsumee=subsumee)
+        model = self.build_model(subsumee=subsumee)
         model.apply_rules()
 
         self.hierarchy[model.subsumee] |= set(
-            c
-            for c in model.initial_individual.concepts
-            if (c in self.concept_names or c == top)
+            c for c in model.initial_individual.concepts if (c in self.concept_names)
         )
 
         self.log.info(f"Subsumers of {subsumee} have been added to hierarchy")
 
-    def _fill_all_subsumers(self, subsumee: Concept) -> None:
+    def fill_all_subsumers(self, subsumee: Concept) -> None:
         added = set()
 
         if not self.hierarchy.get(subsumee):
-            self._compute_subsumers(subsumee=subsumee)
+            self.compute_subsumers(subsumee=subsumee)
 
         for subsumer in self.hierarchy[subsumee]:
             if not self.hierarchy.get(subsumer):
-                self._compute_subsumers(subsumee=subsumer)
+                self.compute_subsumers(subsumee=subsumer)
 
             added |= self.hierarchy[subsumer] - self.hierarchy[subsumee]
 
         self.hierarchy[subsumee] |= added
         while added:
-            self._fill_all_subsumers(subsumee)
+            self.fill_all_subsumers(subsumee)

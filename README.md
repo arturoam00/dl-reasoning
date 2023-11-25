@@ -20,10 +20,10 @@ and the gateway will be open as long as the terminal is running.
 
 In your activated virtual environment, try:
 ```bash
-$ python3 main.py dutch-pancakes.owx
+$ python3 main.py dutch-pancakes.owx ForestDish
 ```
 
 or just 
 ```bash
-$ ./main.py dutch-pancakes.owx
+$ ./main.py dutch-pancakes.owx ForestDish
 ```

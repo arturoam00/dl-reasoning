@@ -7,10 +7,7 @@ from utils import gateway
 from utils.reasoner import ELReasoner
 
 
-def main(
-    file_name: str,
-    class_name: str,
-) -> None:
+def main(file_name: str, class_name: str) -> None:
     log_level = logging.INFO
     logging.basicConfig(
         filename="dl-reasoning.log", filemode="w", encoding="utf-8", level=log_level
@@ -28,7 +25,7 @@ def main(
 
     el_reasoner = ELReasoner(ontology)
 
-    el_reasoner.get_subsumers(class_name, print_output=False)
+    el_reasoner.get_subsumers(class_name, print_output=True)
 
 
 if __name__ == "__main__":

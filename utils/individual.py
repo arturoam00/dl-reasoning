@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import Dict, Optional, Set
+from typing import DefaultDict, Optional, Set
 
 from utils.models import Concept, ELFactory
 
@@ -24,7 +24,7 @@ class Individual:
 
     initial_concept: Concept
     concepts: Set[Concept]
-    successors: Dict[Concept, Set[Optional["Individual"]]]
+    successors: DefaultDict[Concept, Set[Optional["Individual"]]]
 
     def __init__(self, initial_concept: Concept) -> None:
         self.initial_concept = initial_concept
@@ -47,4 +47,4 @@ class Individual:
         return str(self.initial_concept)
 
 
-RelationsDict = dict[Concept, set[Individual]]
+RelationsDict = DefaultDict[Concept, Set[Individual]]
