@@ -4,3 +4,4 @@ doc/
 log.txt
 *.log
 dl4python-0.1-jar-with-dependencies.jar
+example.py
